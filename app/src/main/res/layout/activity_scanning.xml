@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:background="@drawable/gradient"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Scanning_Activity">
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:elevation="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:popupTheme="@style/AppTheme.PopupOverlay" >
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/tv_app_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Scan"
+                    android:textSize="17sp"
+                    android:textColor="@color/white" />
+
+
+
+            </RelativeLayout>
+
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:background="@drawable/black_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
+
+        <LinearLayout
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <TextView
+
+                android:fontFamily="@font/alegreya_sc"
+                android:textSize="15sp"
+                android:layout_weight="2"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="location from wh :"
+                android:textColor="@color/black"/>
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/black_border">
+
+                <TextView
+                    android:fontFamily="@font/alegreya_sc"
+                    android:background="@drawable/black_border"
+                    android:id="@+id/tv_locationName"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    tools:text="ABC"
+                    android:textSize="15sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="35sp"/>
+
+                <Spinner
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="35sp"
+                    android:id="@+id/spinner_Location"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:fontFamily="@font/alegreya_sc"
+                android:textSize="15sp"
+                android:layout_weight="2"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="draft no. :"
+                android:textColor="@color/black"/>
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/black_border"
+               >
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:id="@+id/spinner_draftNo"/>
+
+
+
+                <EditText
+                  android:visibility="gone"
+                  android:id="@+id/et_draftNo"
+                  android:fontFamily="@font/alegreya_sc"
+                  android:textSize="15sp"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:fontFamily="@font/alegreya_sc"
+                android:layout_weight="1"
+                android:layout_marginEnd="10dp"
+                android:textSize="15sp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="scan box :"
+                android:textColor="@color/black"
+                android:layout_marginRight="10dp" />
+
+
+            <LinearLayout
+                android:layout_weight="2"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:id="@+id/btnScanBarcode"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/scan" />
+
+                <CheckBox
+                    android:id="@+id/cb_edit"
+                    android:fontFamily="@font/alegreya_sc"
+                    android:layout_marginStart="50dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Edit"
+                    android:layout_marginLeft="50dp" />
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:fontFamily="@font/alegreya_sc"
+                android:textSize="15sp"
+                android:layout_weight="2"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="barcode no. :"
+                android:textColor="@color/black"/>
+
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <EditText
+                    android:fontFamily="@font/alegreya_sc"
+                    android:background="@drawable/black_border"
+                    android:id="@+id/txtResultsHeader"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    tools:text="ABC"
+                    android:textSize="15sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="35sp"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_margin="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+
+                <TextView
+                    android:fontFamily="@font/alegreya_sc"
+                    android:textSize="15sp"
+                    android:layout_weight="2"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="batch quantity :"
+                    android:textColor="@color/black"/>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+
+                    <TextView
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        tools:text="ABC"
+                        android:textColor="@color/black"
+                        android:background="@drawable/black_border"
+                        android:id="@+id/tv_Quantity"
+                        android:fontFamily="@font/alegreya_sc"
+                        android:textSize="15sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+
+            <TextView
+                android:fontFamily="@font/alegreya_sc"
+                android:textSize="15sp"
+                android:layout_weight="2"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="add qty :"
+                android:textColor="@color/black"/>
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+              >
+
+                <EditText
+                    android:id="@+id/et_qty"
+                    android:fontFamily="@font/alegreya_sc"
+                    android:textSize="15sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_add1"
+                android:fontFamily="@font/alegreya_sc"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:background="@drawable/buttong_bg"
+                android:textColor="@color/black"
+                android:text="Add" />
+
+            <Button
+                android:id="@+id/btn_delete"
+                android:fontFamily="@font/alegreya_sc"
+                android:layout_marginStart="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:background="@drawable/buttong_bg"
+                android:textColor="@color/black"
+                android:text="Delete"
+                android:layout_marginLeft="8dp" />
+
+            <Button
+                android:visibility="gone"
+                android:id="@+id/btn_update"
+                android:fontFamily="@font/alegreya_sc"
+                android:layout_marginStart="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:background="@drawable/buttong_bg"
+                android:textColor="@color/black"
+                android:text="Update"
+                android:layout_marginLeft="8dp" />
+
+
+
+        </LinearLayout>
+
+
+</LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:background="@drawable/black_border"
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <HorizontalScrollView
+
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+
+
+                    <LinearLayout
+
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+
+                            android:fontFamily="@font/alegreya_sc"
+
+                            android:text="Draft Number"
+                            android:layout_width="120sp"
+                            android:layout_height="30dp"
+                            android:gravity="center"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:background="@drawable/buttong_bg"/>
+
+                        <TextView
+
+                            android:fontFamily="@font/alegreya_sc"
+                            android:id="@+id/tvDate"
+                            android:text="Item Code"
+                            android:layout_width="120sp"
+                            android:layout_height="30dp"
+                            android:gravity="center"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:background="@drawable/buttong_bg"/>
+
+                        <TextView
+                            android:fontFamily="@font/alegreya_sc"
+                            android:id="@+id/tvExpenseType"
+                            android:text="Description"
+                            android:layout_width="120sp"
+                            android:layout_height="30dp"
+                            android:gravity="center"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:background="@drawable/buttong_bg"/>
+
+                        <TextView
+                            android:fontFamily="@font/alegreya_sc"
+                            android:id="@+id/tvDeposit"
+                            android:text="Quantity"
+                            android:layout_width="120sp"
+                            android:layout_height="30dp"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:gravity="center"
+                            android:background="@drawable/buttong_bg"/>
+
+                        <TextView
+                            android:fontFamily="@font/alegreya_sc"
+                            android:text="Batch Number"
+                            android:layout_width="120sp"
+                            android:layout_height="30dp"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:gravity="center"
+                            android:background="@drawable/buttong_bg"/>
+
+
+                        <TextView
+                            android:fontFamily="@font/alegreya_sc"
+
+                            android:text="Batch Qty  "
+                            android:layout_width="120sp"
+                            android:layout_height="30dp"
+                            android:gravity="center"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:background="@drawable/buttong_bg"/>
+
+
+                        <TextView
+                            android:fontFamily="@font/alegreya_sc"
+
+                            android:text="Scan Qty  "
+                            android:layout_width="120sp"
+                            android:layout_height="30dp"
+                            android:gravity="center"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:background="@drawable/buttong_bg"/>
+
+
+
+                    </LinearLayout>
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/recycler_item1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+
+
+
+
+
+
+            </HorizontalScrollView>
+
+
+<!--            <HorizontalScrollView-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:scrollbars="vertical"-->
+<!--                tools:targetApi="cupcake">-->
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/recycler_item"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content" />-->
+<!--            </HorizontalScrollView>-->
+
+
+        </LinearLayout>
+
+
+
+        <Button
+            android:id="@+id/btn_submit"
+            android:fontFamily="@font/alegreya_sc"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20sp"
+            android:layout_marginRight="20sp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/buttong_bg"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:text="Submit" />
+
+
+    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

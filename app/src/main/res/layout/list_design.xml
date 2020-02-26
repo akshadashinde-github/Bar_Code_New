@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+
+
+    <TextView
+
+        android:fontFamily="@font/alegreya_sc"
+        android:id="@+id/tv_draftNumber"
+        android:paddingEnd="5dp"
+        android:layout_width="120sp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:paddingRight="5dp" />
+    <TextView
+
+        android:fontFamily="@font/alegreya_sc"
+        android:id="@+id/tv_ItemCode"
+        android:text="item code"
+        android:paddingEnd="5dp"
+        android:layout_width="120sp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:paddingRight="5dp" />
+
+    <TextView
+        android:paddingEnd="5dp"
+        android:paddingStart="5dp"
+        android:fontFamily="@font/alegreya_sc"
+        android:id="@+id/tv_Description"
+        android:text="description"
+        android:layout_width="120sp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:paddingRight="5dp" />
+
+    <TextView
+        android:fontFamily="@font/alegreya_sc"
+        android:id="@+id/tv_quantity"
+        android:text="quantity"
+        android:layout_width="120sp"
+        android:layout_height="30dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:gravity="center"
+      />
+
+
+    <TextView
+        android:fontFamily="@font/alegreya_sc"
+        android:id="@+id/tv_batchNo"
+        android:text="batchNumber"
+        android:layout_width="120sp"
+        android:layout_height="30dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:fontFamily="@font/alegreya_sc"
+        android:id="@+id/tv_batch_qty"
+
+        android:layout_width="120sp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        />
+
+
+    <TextView
+        android:fontFamily="@font/alegreya_sc"
+        android:id="@+id/tv_scan_qty"
+        android:text="Scan Qty  "
+        android:layout_width="120sp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+       />
+
+
+</LinearLayout>
+
