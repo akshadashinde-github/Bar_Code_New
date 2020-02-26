@@ -252,21 +252,10 @@ public class Scanning_Activity extends AppCompatActivity {
                             getDraftNumber1();
 
                         }
-
-
                     }
 
 
-
-
-
                 }
-
-
-
-
-
-
 
 
 
@@ -293,20 +282,231 @@ public class Scanning_Activity extends AppCompatActivity {
 
                 String new_batchNumber = txtResultsHeader.getText().toString().trim();
                 String new_batchQuantity = tv_Quantity.getText().toString().trim();
+                String new_draftNumber = spinner_draftNo.getSelectedItem().toString();
 
-                mySQLiteAdapter.deleteBatchNo(new_batchNumber,new_batchQuantity);
-                mySQLiteAdapter.close();
+                mySQLiteAdapter.UpdateScanQuantity_new(new_batchQuantity,new_batchNumber,new_draftNumber);
 
+
+
+                if (datalist_new.size() > 0) {
+                    datalist_new.clear();
+
+                    datalist_new.addAll(mySQLiteAdapter.getdraftNoWisedata(str_selectedDraftNum));
+
+                    if (datalist_new.size() > 0) {
+
+                        recycler_item.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+                        scandata_adapter = new Scandata_Adapter(Scanning_Activity.this, datalist_new);
+                        recycler_item.setAdapter(scandata_adapter);
+
+                        scandata_adapter.notifyDataSetChanged();
+
+
+                    }
+                }
 
                 txtResultsHeader.setText("");
                 tv_Quantity.setText("");
 
-
+                mySQLiteAdapter.close();
 
 
             }
         });
 
+
+        if(TextUtils.isEmpty(txtResultsHeader.getText().toString().trim())){
+
+
+        }else{
+
+            txtResultsHeader.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+
+//                  str_BarCodeNo = txtResultsHeader.getText().toString().trim();
+//                  str_addQTY = tv_Quantity.getText().toString().trim();
+
+                    if (s.length() == 0) {
+                        // Toast.makeText(getApplicationContext(), "Scan BarCode", Toast.LENGTH_LONG).show();
+                    } else {
+
+
+                        mySQLiteAdapter = null;
+                        if (mySQLiteAdapter == null) {
+                            mySQLiteAdapter = new SQLiteAdapter(Scanning_Activity.this);
+                            mySQLiteAdapter.openToWrite();
+
+                        }
+
+
+                        //mySQLiteAdapter.checkBarCodeNo1(s.toString());
+
+
+                        String batchQty =  mySQLiteAdapter.getbatchquantity(s.toString());
+
+                        tv_Quantity.setText(batchQty);
+
+                        String s_draftNumber = spinner_draftNo.getSelectedItem().toString();
+                        String s_batchNo = txtResultsHeader.getText().toString().trim();
+                        String s_scanQty = tv_Quantity.getText().toString().trim();
+
+                        mySQLiteAdapter.UpdateScanQuantity(s_scanQty, s_batchNo, s_draftNumber);
+
+
+                        if (datalist_new.size() > 0) {
+                            datalist_new.clear();
+
+                            datalist_new.addAll(mySQLiteAdapter.getdraftNoWisedata(str_selectedDraftNum));
+
+                            if (datalist_new.size() > 0) {
+
+                                recycler_item.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+                                scandata_adapter = new Scandata_Adapter(Scanning_Activity.this, datalist_new);
+                                recycler_item.setAdapter(scandata_adapter);
+
+                                scandata_adapter.notifyDataSetChanged();
+
+
+                            }
+                        }
+
+
+
+
+
+
+
+                        mySQLiteAdapter.close();
+
+
+
+                        if (BatchNum_Array.contains(str_BarCodeNo)) {
+                            Toast.makeText(getApplicationContext(), "Bar code no. is available !", Toast.LENGTH_SHORT).show();
+
+                            int index = (int) BatchNum_Array.indexOf(str_BarCodeNo);
+
+                            Quantity = (Quantity_Array.get(index));
+
+                            ItemCode = (ItemCode_Array.get(index));
+                            Batch_Quantity = (BatchQty_Array.get(index));
+                            tv_Quantity.setText(Batch_Quantity);
+
+                            ItemName = (ItemName_Array.get(index));
+                            BatchNumber = (BatchNum_Array.get(index));
+                            DraftNumber = (DraftNumber_Array.get(index));
+                            LineNum = LineNum_Array.get(index);
+
+                            str_addQTY = tv_Quantity.getText().toString().trim();
+
+
+                        }
+
+
+
+                    }
+                }
+
+
+
+                @Override public void afterTextChanged(Editable s) {
+
+
+//                  str_BarCodeNo = txtResultsHeader.getText().toString().trim();
+//                  str_addQTY = tv_Quantity.getText().toString().trim();
+
+                    if (s.length() == 0) {
+                        // Toast.makeText(getApplicationContext(), "Scan BarCode", Toast.LENGTH_LONG).show();
+                    } else {
+
+
+                        mySQLiteAdapter = null;
+                        if (mySQLiteAdapter == null) {
+                            mySQLiteAdapter = new SQLiteAdapter(Scanning_Activity.this);
+                            mySQLiteAdapter.openToWrite();
+
+                        }
+
+
+                        //mySQLiteAdapter.checkBarCodeNo1(s.toString());
+
+
+                        String batchQty =  mySQLiteAdapter.getbatchquantity(s.toString());
+
+                        tv_Quantity.setText(batchQty);
+
+                        String s_draftNumber = spinner_draftNo.getSelectedItem().toString();
+                        String s_batchNo = txtResultsHeader.getText().toString().trim();
+                        String s_scanQty = tv_Quantity.getText().toString().trim();
+
+                        mySQLiteAdapter.UpdateScanQuantity(s_scanQty, s_batchNo, s_draftNumber);
+
+
+                        if (datalist_new.size() > 0) {
+                            datalist_new.clear();
+
+                            datalist_new.addAll(mySQLiteAdapter.getdraftNoWisedata(str_selectedDraftNum));
+
+                            if (datalist_new.size() > 0) {
+
+                                recycler_item.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+                                scandata_adapter = new Scandata_Adapter(Scanning_Activity.this, datalist_new);
+                                recycler_item.setAdapter(scandata_adapter);
+
+                                scandata_adapter.notifyDataSetChanged();
+
+
+                            }
+                        }
+
+
+
+
+
+
+
+                        mySQLiteAdapter.close();
+
+
+
+                        if (BatchNum_Array.contains(str_BarCodeNo)) {
+                            Toast.makeText(getApplicationContext(), "Bar code no. is available !", Toast.LENGTH_SHORT).show();
+
+                            int index = (int) BatchNum_Array.indexOf(str_BarCodeNo);
+
+                            Quantity = (Quantity_Array.get(index));
+
+                            ItemCode = (ItemCode_Array.get(index));
+                            Batch_Quantity = (BatchQty_Array.get(index));
+                            tv_Quantity.setText(Batch_Quantity);
+
+                            ItemName = (ItemName_Array.get(index));
+                            BatchNumber = (BatchNum_Array.get(index));
+                            DraftNumber = (DraftNumber_Array.get(index));
+                            LineNum = LineNum_Array.get(index);
+
+                            str_addQTY = tv_Quantity.getText().toString().trim();
+
+
+                        }
+
+
+
+                    }
+                }
+            });
+
+
+        }
 
 
 
@@ -356,6 +556,10 @@ public class Scanning_Activity extends AppCompatActivity {
 
                          }
                      }
+
+
+
+
                  }
 
 
@@ -462,6 +666,55 @@ public class Scanning_Activity extends AppCompatActivity {
                   }
               }
                             @Override public void afterTextChanged(Editable s) {
+
+                                if (s.length() == 0) {
+                                    // Toast.makeText(getApplicationContext(), "Scan BarCode", Toast.LENGTH_LONG).show();
+                                } else {
+
+
+                                    mySQLiteAdapter = null;
+                                    if (mySQLiteAdapter == null) {
+                                        mySQLiteAdapter = new SQLiteAdapter(Scanning_Activity.this);
+                                        mySQLiteAdapter.openToWrite();
+
+                                    }
+
+
+                                    //mySQLiteAdapter.checkBarCodeNo1(s.toString());
+
+
+                                    String batchQty =  mySQLiteAdapter.getbatchquantity(s.toString());
+
+                                    tv_Quantity.setText(batchQty);
+
+                                    mySQLiteAdapter.close();
+
+
+                                    if (BatchNum_Array.contains(str_BarCodeNo)) {
+                                        Toast.makeText(getApplicationContext(), "Bar code no. is available !", Toast.LENGTH_SHORT).show();
+
+                                        int index = (int) BatchNum_Array.indexOf(str_BarCodeNo);
+
+                                        Quantity = (Quantity_Array.get(index));
+
+                                        ItemCode = (ItemCode_Array.get(index));
+                                        Batch_Quantity = (BatchQty_Array.get(index));
+                                        tv_Quantity.setText(Batch_Quantity);
+
+                                        ItemName = (ItemName_Array.get(index));
+                                        BatchNumber = (BatchNum_Array.get(index));
+                                        DraftNumber = (DraftNumber_Array.get(index));
+                                        LineNum = LineNum_Array.get(index);
+
+                                        str_addQTY = tv_Quantity.getText().toString().trim();
+
+
+                                    }
+
+
+
+                                }
+
             }
 
            });
@@ -497,24 +750,197 @@ public class Scanning_Activity extends AppCompatActivity {
         super.onStart();
 
 
-        if (!TextUtils.isEmpty(txtResultsHeader.getText().toString().trim())) {
-            str_BarCodeNo = txtResultsHeader.getText().toString().trim();
+
+        if(TextUtils.isEmpty(txtResultsHeader.getText().toString().trim())){
 
 
-            if (BatchNum_Array != null) {
+        }else{
 
-                if (BatchNum_Array.contains(str_BarCodeNo)) {
-                    Toast.makeText(getApplicationContext(), "Bar code no. is available !", Toast.LENGTH_SHORT).show();
+            txtResultsHeader.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-
-                } else {
-                    // Toast.makeText(this, "Bar code no. is not available", Toast.LENGTH_SHORT).show();
                 }
 
-            } else {
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                Toast.makeText(this, "Data not found", Toast.LENGTH_SHORT).show();
-            }
+
+//                  str_BarCodeNo = txtResultsHeader.getText().toString().trim();
+//                  str_addQTY = tv_Quantity.getText().toString().trim();
+
+                    if (s.length() == 0) {
+                        // Toast.makeText(getApplicationContext(), "Scan BarCode", Toast.LENGTH_LONG).show();
+                    } else {
+
+
+                        mySQLiteAdapter = null;
+                        if (mySQLiteAdapter == null) {
+                            mySQLiteAdapter = new SQLiteAdapter(Scanning_Activity.this);
+                            mySQLiteAdapter.openToWrite();
+
+                        }
+
+
+                        //mySQLiteAdapter.checkBarCodeNo1(s.toString());
+
+
+                        String s_draftNumber = spinner_draftNo.getSelectedItem().toString();
+                        String s_batchNo = txtResultsHeader.getText().toString().trim();
+                        String s_scanQty = tv_Quantity.getText().toString().trim();
+
+                        String batchQty =  mySQLiteAdapter.getbatchquantity(s_batchNo);
+
+                        tv_Quantity.setText(batchQty);
+
+                        mySQLiteAdapter.UpdateScanQuantity(s_scanQty, s_batchNo, s_draftNumber);
+
+
+                        if (datalist_new.size() > 0) {
+                            datalist_new.clear();
+
+                            datalist_new.addAll(mySQLiteAdapter.getdraftNoWisedata(str_selectedDraftNum));
+
+                            if (datalist_new.size() > 0) {
+
+                                recycler_item.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+                                scandata_adapter = new Scandata_Adapter(Scanning_Activity.this, datalist_new);
+                                recycler_item.setAdapter(scandata_adapter);
+
+                                scandata_adapter.notifyDataSetChanged();
+
+
+                            }
+                        }
+
+
+
+
+
+
+
+                        mySQLiteAdapter.close();
+
+
+
+                        if (BatchNum_Array.contains(str_BarCodeNo)) {
+                            Toast.makeText(getApplicationContext(), "Bar code no. is available !", Toast.LENGTH_SHORT).show();
+
+                            int index = (int) BatchNum_Array.indexOf(str_BarCodeNo);
+
+                            Quantity = (Quantity_Array.get(index));
+
+                            ItemCode = (ItemCode_Array.get(index));
+                            Batch_Quantity = (BatchQty_Array.get(index));
+                            tv_Quantity.setText(Batch_Quantity);
+
+                            ItemName = (ItemName_Array.get(index));
+                            BatchNumber = (BatchNum_Array.get(index));
+                            DraftNumber = (DraftNumber_Array.get(index));
+                            LineNum = LineNum_Array.get(index);
+
+                            str_addQTY = tv_Quantity.getText().toString().trim();
+
+
+                        }
+
+
+
+                    }
+                }
+
+
+
+                @Override public void afterTextChanged(Editable s) {
+
+
+//                  str_BarCodeNo = txtResultsHeader.getText().toString().trim();
+//                  str_addQTY = tv_Quantity.getText().toString().trim();
+
+                    if (s.length() == 0) {
+                        // Toast.makeText(getApplicationContext(), "Scan BarCode", Toast.LENGTH_LONG).show();
+                    } else {
+
+
+                        mySQLiteAdapter = null;
+                        if (mySQLiteAdapter == null) {
+                            mySQLiteAdapter = new SQLiteAdapter(Scanning_Activity.this);
+                            mySQLiteAdapter.openToWrite();
+
+                        }
+
+
+                        //mySQLiteAdapter.checkBarCodeNo1(s.toString());
+
+
+                        String batchQty =  mySQLiteAdapter.getbatchquantity(s.toString());
+
+                        tv_Quantity.setText(batchQty);
+
+                        String s_draftNumber = spinner_draftNo.getSelectedItem().toString();
+                        String s_batchNo = txtResultsHeader.getText().toString().trim();
+                        String s_scanQty = tv_Quantity.getText().toString().trim();
+
+                        mySQLiteAdapter.UpdateScanQuantity(s_scanQty, s_batchNo, s_draftNumber);
+
+
+                        if (datalist_new.size() > 0) {
+                            datalist_new.clear();
+
+                            datalist_new.addAll(mySQLiteAdapter.getdraftNoWisedata(str_selectedDraftNum));
+
+                            if (datalist_new.size() > 0) {
+
+                                recycler_item.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+                                scandata_adapter = new Scandata_Adapter(Scanning_Activity.this, datalist_new);
+                                recycler_item.setAdapter(scandata_adapter);
+
+                                scandata_adapter.notifyDataSetChanged();
+
+
+                            }
+                        }
+
+
+
+
+
+
+
+                        mySQLiteAdapter.close();
+
+
+
+                        if (BatchNum_Array.contains(str_BarCodeNo)) {
+                            Toast.makeText(getApplicationContext(), "Bar code no. is available !", Toast.LENGTH_SHORT).show();
+
+                            int index = (int) BatchNum_Array.indexOf(str_BarCodeNo);
+
+                            Quantity = (Quantity_Array.get(index));
+
+                            ItemCode = (ItemCode_Array.get(index));
+                            Batch_Quantity = (BatchQty_Array.get(index));
+                            tv_Quantity.setText(Batch_Quantity);
+
+                            ItemName = (ItemName_Array.get(index));
+                            BatchNumber = (BatchNum_Array.get(index));
+                            DraftNumber = (DraftNumber_Array.get(index));
+                            LineNum = LineNum_Array.get(index);
+
+                            str_addQTY = tv_Quantity.getText().toString().trim();
+
+
+                        }
+
+
+
+                    }
+                }
+            });
+
+
         }
 
 

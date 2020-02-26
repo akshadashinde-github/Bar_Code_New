@@ -208,6 +208,11 @@ public class SQLiteAdapter {
         //sqLiteDatabase.delete(CUSTOMER_TABLE, "name" + "=" + id, null);
     }
 
+
+    public void delete(String s_scanquantity1) {
+        sqLiteDatabase.execSQL("delete from "+CUSTOMER_TABLE+" where scanquantity='"+s_scanquantity1+"'");
+    }
+
     public void UpdateScanQuantity(String scanquntity1 , String batchNo, String s_draftNo)
     {
 //
@@ -221,6 +226,19 @@ public class SQLiteAdapter {
 
     }
 
+
+    public void UpdateScanQuantity_new(String scanquntity1 , String batchNo, String s_draftNo)
+    {
+//
+//        String select = " update " + CUSTOMER_TABLE + " set  scanquantity = '" + scanquntity1 + "'" +
+//                " where batchnumber  ='" + batchNo + "' & draftnumber = '" + s_draftNo + "'";
+
+        String select = " update " + CUSTOMER_TABLE + " set  scanquantity = '" + null + "'" +
+                " where batchnumber  = '" + batchNo  + "'  AND  draftnumber = '" + s_draftNo + "'";
+
+        sqLiteDatabase.execSQL(select);
+
+    }
 
 
 
